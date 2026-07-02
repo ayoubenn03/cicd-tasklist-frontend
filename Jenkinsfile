@@ -36,7 +36,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'gb-sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     sh '''
                         docker run --rm \
                             --volumes-from "$(hostname)" \
