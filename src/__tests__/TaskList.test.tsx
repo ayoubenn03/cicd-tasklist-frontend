@@ -55,5 +55,33 @@ describe('TaskList', () => {
 		expect(screen.getByText('2 tâches')).toBeInTheDocument();
 	});
 
-	// ... TODO: Add more tests
+	it('shows error state', () => {
+		render(
+			<TaskList
+				tasks={[]}
+				loading={false}
+				error="Erreur réseau"
+				onToggle={vi.fn()}
+				onDelete={vi.fn()}
+				onEdit={vi.fn()}
+			/>
+		);
+		expect(screen.getByTestId('error')).toBeInTheDocument();
+		expect(screen.getByText('Erreur : Erreur réseau')).toBeInTheDocument();
+	});
+
+	it('shows empty state when there are no tasks', () => {
+		render(
+			<TaskList
+				tasks={[]}
+				loading={false}
+				error={null}
+				onToggle={vi.fn()}
+				onDelete={vi.fn()}
+				onEdit={vi.fn()}
+			/>
+		);
+		expect(screen.getByTestId('empty')).toBeInTheDocument();
+		expect(screen.getByText('Aucune tâche')).toBeInTheDocument();
+	});
 });
