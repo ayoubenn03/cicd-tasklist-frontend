@@ -1,0 +1,11 @@
+node_modules
+dist
+reports
+coverage
+.git
+.gitignore
+.env
+.env.*
+*.log
+.scannerwork
+sbom-spdx.json
